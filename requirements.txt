@@ -1,0 +1,4 @@
+flask==2.0.1
+openpyxl==3.0.9
+PyQt5==5.15.6
+requests==2.26.0

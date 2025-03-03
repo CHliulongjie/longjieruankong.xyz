@@ -1,0 +1,14 @@
+# 忽略 Python 虚拟环境
+venv/
+.env/
+
+# 忽略 IDE 配置文件
+.idea/
+.vscode/
+
+# 忽略临时文件
+*.tmp
+*.log
+
+# 忽略 LeanCloud 配置文件
+leancloud_config.json
