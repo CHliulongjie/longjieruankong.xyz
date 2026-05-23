@@ -374,8 +374,30 @@ def get_classes():
 
 @app.route('/subjects')
 def get_subjects():
-    subjects = ['语文', '数学', '英语', '物理', '化学', '生物', '历史', '地理', '政治', '信息']
-    return jsonify({'subjects': subjects})
+    class_name = request.args.get('class_name')
+    
+    # 如果提供了班级名称，从对应的班级文件夹中获取学科
+    if class_name:
+        class_dir = os.path.join(app.config['UPLOAD_FOLDER'], class_name)
+        subjects = []
+        if os.path.exists(class_dir):
+            for file in os.listdir(class_dir):
+                if file.endswith('.xlsx'):
+                    # 去掉 .xlsx 后缀得到学科名称
+                    subject = file.replace('.xlsx', '')
+                    subjects.append(subject)
+        return jsonify({'subjects': sorted(subjects)})
+    
+    # 如果没有提供班级名称，返回所有班级中存在的学科（去重）
+    all_subjects = set()
+    for item in os.listdir(app.config['UPLOAD_FOLDER']):
+        item_path = os.path.join(app.config['UPLOAD_FOLDER'], item)
+        if os.path.isdir(item_path):
+            for file in os.listdir(item_path):
+                if file.endswith('.xlsx'):
+                    subject = file.replace('.xlsx', '')
+                    all_subjects.add(subject)
+    return jsonify({'subjects': sorted(list(all_subjects))})
 
 @app.route('/students', methods=['GET'])
 def get_students():
