@@ -329,6 +329,27 @@ def change_password():
 @app.route('/users', methods=['GET'])
 def get_users():
     users_data = []
+    app_name = request.args.get('app_name', 'homework')
+    
+    # 获取权限数据库路径
+    perm_db_path = os.path.join(permissions_dir, f'{app_name}_permissions.db')
+    
+    def get_user_permissions(uid):
+        """从权限数据库获取用户权限"""
+        if os.path.exists(perm_db_path):
+            try:
+                perm_conn = sqlite3.connect(perm_db_path)
+                perm_cursor = perm_conn.cursor()
+                perm_cursor.execute(f"SELECT permissions FROM {app_name}_permissions WHERE uid = ?", (uid,))
+                result = perm_cursor.fetchone()
+                perm_conn.close()
+                if result and result[0]:
+                    # 将逗号分隔的字符串转换为数组
+                    return result[0].split(',')
+                return ['.']
+            except:
+                return ['.']
+        return ['.']
     
     admin_db_path = os.path.join(accounts_dir, 'admin.db')
     if os.path.exists(admin_db_path):
@@ -336,11 +357,12 @@ def get_users():
         admin_cursor = admin_conn.cursor()
         admin_cursor.execute("SELECT username, uid, admin_level, register_date FROM admins")
         for row in admin_cursor.fetchall():
+            permissions = get_user_permissions(row[1])
             users_data.append({
                 'username': row[0],
                 'uid': row[1],
                 'roles': ['admin'],
-                'permissions': ['*'] if row[2] == 'super_admin' else ['.'],
+                'permissions': permissions,
                 'account_type': 'admin',
                 'admin_level': row[2]
             })
@@ -352,11 +374,12 @@ def get_users():
         user_cursor = user_conn.cursor()
         user_cursor.execute("SELECT username, uid, register_date FROM users")
         for row in user_cursor.fetchall():
+            permissions = get_user_permissions(row[1])
             users_data.append({
                 'username': row[0],
                 'uid': row[1],
                 'roles': ['user'],
-                'permissions': ['.'],
+                'permissions': permissions,
                 'account_type': 'user'
             })
         user_conn.close()
@@ -446,18 +469,11 @@ def get_assignments():
         workbook = openpyxl.load_workbook(file_path)
         sheet = workbook.active
         
-        headers = []
-        for col in range(1, sheet.max_column + 1):
-            header = sheet.cell(row=1, column=col).value
-            headers.append(header if header else f'列{col}')
-        
-        for row in sheet.iter_rows(min_row=2, values_only=True):
-            if row and any(row):
-                assignment = {}
-                for i, val in enumerate(row):
-                    if i < len(headers):
-                        assignment[headers[i]] = val
-                assignments.append(assignment)
+        # 只获取作业名称列表（从第4列开始，即第1行的表头）
+        for col in range(4, sheet.max_column + 1):
+            assignment_name = sheet.cell(row=1, column=col).value
+            if assignment_name:
+                assignments.append(assignment_name)
         
         workbook.close()
     except Exception as e:
