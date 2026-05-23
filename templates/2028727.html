@@ -1,0 +1,791 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杨顺涵的自我介绍</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- 配置Tailwind自定义颜色和字体 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5', // 主色调：靛蓝色
+                        secondary: '#10B981', // 辅助色：绿色
+                        accent: '#F59E0B', // 强调色：琥珀色
+                        dark: '#1E293B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- 自定义工具类 -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            .animate-float {
+                animation: float 6s ease-in-out infinite;
+            }
+            .animate-float-delay-1 {
+                animation: float 6s ease-in-out 1s infinite;
+            }
+            .animate-float-delay-2 {
+                animation: float 6s ease-in-out 2s infinite;
+            }
+            .bg-gradient-personal {
+                background: linear-gradient(135deg, #4F46E5 0%, #3B82F6 100%);
+            }
+        }
+    </style>
+    
+    <style>
+        /* 全局动画定义 */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #4F46E5, #3B82F6, #60A5FA, #93C5FD);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        /* 平滑滚动 */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* 进度条动画 */
+        .skill-bar {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 1s ease-out;
+        }
+        
+        .skill-visible .skill-progress {
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+<body class="font-sans text-dark bg-slate-50 min-h-screen">
+    <!-- 粒子背景 -->
+    <div class="fixed inset-0 z-0 opacity-20 overflow-hidden pointer-events-none">
+        <div id="particles" class="absolute inset-0"></div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#home" class="text-primary font-bold text-xl flex items-center gap-2">
+                <i class="fa fa-user-circle"></i>
+                <span>杨顺涵</span>
+            </a>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="#home" class="text-slate-600 hover:text-primary transition-colors">首页</a>
+                <a href="#about" class="text-slate-600 hover:text-primary transition-colors">关于我</a>
+                <a href="#hobbies" class="text-slate-600 hover:text-primary transition-colors">兴趣爱好</a>
+                <a href="#achievements" class="text-slate-600 hover:text-primary transition-colors">个人成就</a>
+            </div>
+            <button class="md:hidden text-slate-700" id="menuToggle">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100">
+            <div class="container mx-auto px-4 py-2 flex flex-col gap-3">
+                <a href="#home" class="py-2 text-slate-600 hover:text-primary transition-colors">首页</a>
+                <a href="#about" class="py-2 text-slate-600 hover:text-primary transition-colors">关于我</a>
+                <a href="#hobbies" class="py-2 text-slate-600 hover:text-primary transition-colors">兴趣爱好</a>
+                <a href="#achievements" class="py-2 text-slate-600 hover:text-primary transition-colors">个人成就</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="pt-28 pb-20 md:pt-40 md:pb-32 relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <!-- 左侧文字内容 -->
+                <div class="md:w-1/2 space-y-6 text-center md:text-left">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-medium text-sm">
+                        中国中学 · 高一（7）班
+                    </div>
+                    <h1 class="text-[clamp(2.5rem,6vw,4rem)] font-bold leading-tight text-shadow">
+                        你好，我是<br>
+                        <span class="text-primary">杨顺涵</span>
+                    </h1>
+                    <p class="text-slate-600 text-lg md:text-xl max-w-lg mx-auto md:mx-0">
+                        一名充满好奇心和探索精神的高一学生，热爱学习新知识，
+                        喜欢结交志同道合的朋友，对未来充满期待。
+                    </p>
+                    <div class="flex flex-wrap gap-4 justify-center md:justify-start pt-4">
+                        <a href="#about" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:-translate-y-1">
+                            了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#contact" class="px-6 py-3 bg-white text-primary border border-primary/20 rounded-lg hover:bg-primary/5 transition-all hover:-translate-y-1">
+                            联系我 <i class="fa fa-envelope ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 右侧头像区域 -->
+                <div class="md:w-1/2 relative">
+                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-2xl mx-auto animate-float">
+                        <img src="https://picsum.photos/400/400" alt="杨顺涵的照片" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <!-- 装饰元素 -->
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-secondary/20 rounded-full animate-float-delay-1"></div>
+                    <div class="absolute -bottom-5 -left-5 w-24 h-24 bg-accent/20 rounded-full animate-float-delay-2"></div>
+                    
+                    <!-- 悬浮信息卡片 -->
+                    <div class="absolute top-1/2 -right-5 md:right-0 transform -translate-y-1/2 bg-white p-4 rounded-lg shadow-xl animate-float hidden md:block">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                <i class="fa fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-slate-500">年级</div>
+                                <div class="font-medium">高一（7）班</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 波浪装饰 -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" class="w-full h-auto">
+                <path fill="#4F46E5" fill-opacity="0.1" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,58.7C1200,64,1320,64,1380,64L1440,64L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">关于我</h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-slate-800">你好！我是杨顺涵</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        我目前就读于中国中学高一（7）班，是一名充满活力和好奇心的高中生。
+                        我对世界充满好奇，喜欢探索新事物，无论是学术知识还是生活技能，
+                        我都愿意尝试和学习。
+                    </p>
+                    <p class="text-slate-600 leading-relaxed">
+                        在学习上，我认真对待每一门学科，尤其对数学和物理有着浓厚的兴趣，
+                        喜欢通过解决难题来挑战自己。在班级里，我乐于帮助同学，积极参与
+                        集体活动，和同学们相处融洽。
+                    </p>
+                    
+                    <!-- 个人信息卡片 -->
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <div class="text-sm text-slate-500 mb-1">学校</div>
+                            <div class="font-medium">中国中学</div>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <div class="text-sm text-slate-500 mb-1">年级</div>
+                            <div class="font-medium">高一（7）班</div>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <div class="text-sm text-slate-500 mb-1">兴趣</div>
+                            <div class="font-medium">阅读、运动、编程</div>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <div class="text-sm text-slate-500 mb-1">特长</div>
+                            <div class="font-medium">数学、篮球</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 技能展示 -->
+                <div class="bg-slate-50 p-8 rounded-2xl">
+                    <h3 class="text-2xl font-bold mb-6">我的能力</h3>
+                    
+                    <div class="space-y-6">
+                        <!-- 学习能力 -->
+                        <div class="skill-bar">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">学习能力</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="h-3 bg-slate-200 rounded-full overflow-hidden">
+                                <div class="skill-progress bg-primary rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 数学能力 -->
+                        <div class="skill-bar">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">数学能力</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="h-3 bg-slate-200 rounded-full overflow-hidden">
+                                <div class="skill-progress bg-primary rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 团队协作 -->
+                        <div class="skill-bar">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">团队协作</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="h-3 bg-slate-200 rounded-full overflow-hidden">
+                                <div class="skill-progress bg-primary rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 体育技能 -->
+                        <div class="skill-bar">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">体育技能</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="h-3 bg-slate-200 rounded-full overflow-hidden">
+                                <div class="skill-progress bg-primary rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 编程基础 -->
+                        <div class="skill-bar">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">编程基础</span>
+                                <span>60%</span>
+                            </div>
+                            <div class="h-3 bg-slate-200 rounded-full overflow-hidden">
+                                <div class="skill-progress bg-primary rounded-full" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 兴趣爱好 -->
+    <section id="hobbies" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">我的兴趣爱好</h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-600 max-w-2xl mx-auto">
+                    除了学习之外，我还有许多兴趣爱好，它们丰富了我的生活，
+                    也让我学到了课本之外的知识和技能。
+                </p>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 爱好1：阅读 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/600/400?random=1" alt="阅读书籍" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                            <i class="fa fa-book text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">阅读</h3>
+                        <p class="text-slate-600">
+                            我喜欢阅读各类书籍，尤其是科幻小说和科普读物。阅读让我
+                            能够了解更广阔的世界，丰富我的知识储备和想象力。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 爱好2：篮球 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/600/400?random=2" alt="打篮球" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mb-4">
+                            <i class="fa fa-basketball-ball text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">篮球</h3>
+                        <p class="text-slate-600">
+                            篮球是我最爱的运动，每周我都会和同学一起打几次篮球。
+                            它不仅锻炼了我的身体，还培养了我的团队合作精神和竞争意识。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 爱好3：编程 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/600/400?random=3" alt="编程" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent mb-4">
+                            <i class="fa fa-code text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">编程</h3>
+                        <p class="text-slate-600">
+                            我正在学习编程基础知识，喜欢通过代码创造一些小工具和游戏。
+                            编程培养了我的逻辑思维能力和问题解决能力。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 爱好4：旅行 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/600/400?random=4" alt="旅行" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mb-4">
+                            <i class="fa fa-map-marker text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">旅行</h3>
+                        <p class="text-slate-600">
+                            假期里，我喜欢和家人一起去旅行，见识不同地方的风土人情，
+                            品尝各地美食，这些经历让我对世界有了更直观的认识。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 爱好5：摄影 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/600/400?random=5" alt="摄影" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-500 mb-4">
+                            <i class="fa fa-camera text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">摄影</h3>
+                        <p class="text-slate-600">
+                            我喜欢用镜头记录生活中的美好瞬间，无论是自然风光还是
+                            人文景观，都能通过摄影展现出不同的魅力。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 爱好6：音乐 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/600/400?random=6" alt="音乐" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-500 mb-4">
+                            <i class="fa fa-music text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">音乐</h3>
+                        <p class="text-slate-600">
+                            音乐是我放松心情的好方式，我喜欢听各种类型的音乐，
+                            也正在学习吉他，希望能自己演奏喜欢的歌曲。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 个人成就 -->
+    <section id="achievements" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">我的成就</h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-600 max-w-2xl mx-auto">
+                    在学习和生活中，我努力追求进步，取得了一些小小的成就，
+                    这些都是我成长道路上的宝贵经历。
+                </p>
+            </div>
+            
+            <div class="relative">
+                <!-- 时间线 -->
+                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-slate-200 transform -translate-x-1/2"></div>
+                
+                <!-- 成就列表 -->
+                <div class="space-y-12">
+                    <!-- 成就1 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0 md:order-1">
+                            <div class="bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                                <div class="text-sm text-primary font-medium mb-1">2024年9月</div>
+                                <h3 class="text-xl font-bold mb-2">校级数学竞赛二等奖</h3>
+                                <p class="text-slate-600">
+                                    参加学校组织的高一数学竞赛，凭借平时的积累和努力，
+                                    获得了二等奖的好成绩，这让我对数学的兴趣更加浓厚。
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-12 flex justify-center relative z-10">
+                            <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center shadow-lg">
+                                <i class="fa fa-school"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-1/2 md:pl-12 md:order-2"></div>
+                    </div>
+                    
+                    <!-- 成就2 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 mb-6 md:mb-0"></div>
+                        
+                        <div class="md:w-12 flex justify-center relative z-10">
+                            <div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center shadow-lg">
+                                <i class="fa fa-trophy"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-1/2 md:pl-12">
+                            <div class="bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                                <div class="text-sm text-secondary font-medium mb-1">2024年11月</div>
+                                <h3 class="text-xl font-bold mb-2">班级篮球比赛冠军</h3>
+                                <p class="text-slate-600">
+                                    作为班级篮球队的一员，我们经过多轮比赛，最终获得了
+                                    年级篮球比赛的冠军。这是团队合作的成果，让我深刻体会到
+                                    了集体的力量。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 成就3 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0 md:order-1">
+                            <div class="bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                                <div class="text-sm text-accent font-medium mb-1">2025年3月</div>
+                                <h3 class="text-xl font-bold mb-2">编程入门作品完成</h3>
+                                <p class="text-slate-600">
+                                    自学编程基础知识后，完成了第一个小作品——一个简单的
+                                    计算器应用程序。虽然功能简单，但让我感受到了编程的乐趣和成就感。
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-12 flex justify-center relative z-10">
+                            <div class="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center shadow-lg">
+                                <i class="fa fa-basketball-ball"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-1/2 md:pl-12 md:order-2"></div>
+                    </div>
+                    
+                    <!-- 成就4 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 mb-6 md:mb-0"></div>
+                        
+                        <div class="md:w-12 flex justify-center relative z-10">
+                            <div class="w-8 h-8 rounded-full bg-purple-500 text-white flex items-center justify-center shadow-lg">
+                                <i class="fa fa-code"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-1/2 md:pl-12">
+                            <div class="bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                                <div class="text-sm text-purple-500 font-medium mb-1">2025年9月</div>
+                                <h3 class="text-xl font-bold mb-2">入学中国中学</h3>
+                                <p class="text-slate-600">
+                                    以优异的成绩考入中国中学，并被分到了高一（7）班这个温暖的集体。
+                                    这是我人生新的起点，我将在这里开始三年的高中生活。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我 -->
+    <section id="contact" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">联系我</h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-600 max-w-2xl mx-auto">
+                    如果你想认识我，或者有任何问题想和我交流，
+                    可以通过以下方式联系我。
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-10">
+                    <!-- 联系信息 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6">联系方式</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 mt-1">
+                                    <i class="fa fa-map-marker"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium mb-1">学校地址</h4>
+                                    <p class="text-slate-600">中国中学 高一（7）班</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 mt-1">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium mb-1">电子邮箱</h4>
+                                    <p class="text-slate-600">yangshunhan@example.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 mt-1">
+                                    <i class="fa fa-weixin"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium mb-1">微信</h4>
+                                    <p class="text-slate-600">YangShunHan_WeChat</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 社交媒体 -->
+                        <div class="mt-10">
+                            <h4 class="font-medium mb-4">社交媒体</h4>
+                            <div class="flex gap-4">
+                                <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-primary hover:text-white transition-colors">
+                                    <i class="fa fa-weibo"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-primary hover:text-white transition-colors">
+                                    <i class="fa fa-qq"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-primary hover:text-white transition-colors">
+                                    <i class="fa fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 留言表单 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6">给我留言</h3>
+                        
+                        <form id="messageForm" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-slate-700 mb-1">你的名字</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all" placeholder="请输入你的名字">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-slate-700 mb-1">电子邮箱</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all" placeholder="请输入你的邮箱">
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-slate-700 mb-1">留言内容</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all" placeholder="请输入你想对我说的话"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all shadow-md shadow-primary/20 hover:shadow-primary/30 hover:-translate-y-1">
+                                发送留言 <i class="fa fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-2">杨顺涵</h3>
+                    <p class="text-slate-400">中国中学 高一（7）班</p>
+                </div>
+                
+                <div class="flex gap-6 mb-6 md:mb-0">
+                    <a href="#home" class="text-slate-400 hover:text-white transition-colors">首页</a>
+                    <a href="#about" class="text-slate-400 hover:text-white transition-colors">关于我</a>
+                    <a href="#hobbies" class="text-slate-400 hover:text-white transition-colors">兴趣爱好</a>
+                    <a href="#achievements" class="text-slate-400 hover:text-white transition-colors">个人成就</a>
+                    <a href="#contact" class="text-slate-400 hover:text-white transition-colors">联系我</a>
+                </div>
+                
+                <div class="text-slate-400 text-sm">
+                    &copy; 2025 杨顺涵的自我介绍. 保留所有权利.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-primary text-white shadow-lg flex items-center justify-center opacity-0 invisible transition-all z-50">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 点击导航链接关闭移动端菜单
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // 回到顶部按钮
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+            }
+            
+            // 导航栏滚动效果
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2', 'shadow');
+                nav.classList.remove('py-3');
+            } else {
+                nav.classList.add('py-3');
+                nav.classList.remove('py-2', 'shadow');
+            }
+            
+            // 技能条动画
+            const skillBars = document.querySelectorAll('.skill-bar');
+            skillBars.forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+                
+                if (isVisible) {
+                    bar.classList.add('skill-visible');
+                }
+            });
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 表单提交处理
+        const messageForm = document.getElementById('messageForm');
+        messageForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // 获取表单数据
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // 简单验证
+            if (!name || !email || !message) {
+                alert('请填写完整信息');
+                return;
+            }
+            
+            // 模拟提交
+            const submitBtn = messageForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i>发送中...';
+            
+            setTimeout(() => {
+                alert(`感谢你的留言，${name}！我会尽快回复你。`);
+                messageForm.reset();
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            }, 1500);
+        });
+        
+        // 创建粒子背景
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 80;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                
+                // 随机样式
+                const size = Math.random() * 3 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // 随机颜色
+                const colors = ['#4F46E5', '#3B82F6', '#60A5FA', '#10B981', '#F59E0B'];
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                particle.style.borderRadius = '50%';
+                particle.style.position = 'absolute';
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.opacity = Math.random() * 0.8 + 0.2;
+                
+                // 随机动画
+                const duration = Math.random() * 30 + 20;
+                particle.style.animation = `float ${duration}s linear infinite`;
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // 页面加载完成后执行
+        window.addEventListener('load', () => {
+            createParticles();
+            
+            // 触发一次滚动事件以初始化元素状态
+            window.dispatchEvent(new Event('scroll'));
+        });
+    </script>
+</body>
+</html>
+    

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>马元上 - 个人介绍</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a1a2e',
+                        secondary: '#16213e',
+                        accent: '#e94560',
+                        light: '#f6f6f6',
+                    },
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'Consolas', 'Monaco', 'monospace'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .border-gradient {
+                border-image: linear-gradient(to right, #e94560, #16213e) 1;
+            }
+            .section-divider {
+                height: 1px;
+                background: linear-gradient(90deg, transparent, #e94560, transparent);
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+    <!-- 顶部导航 -->
+    <header class="fixed top-0 left-0 right-0 bg-primary text-white z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="font-mono font-bold text-xl tracking-wider">MA YUANSHANG</div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-accent transition-colors duration-300">关于</a>
+                <a href="#education" class="hover:text-accent transition-colors duration-300">教育</a>
+                <a href="#achievements" class="hover:text-accent transition-colors duration-300">成就</a>
+                <a href="#contact" class="hover:text-accent transition-colors duration-300">联系</a>
+            </nav>
+            <button class="md:hidden text-2xl" id="menuToggle">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobileMenu" class="hidden md:hidden bg-secondary px-4 py-2">
+            <div class="flex flex-col space-y-3 py-3">
+                <a href="#about" class="hover:text-accent transition-colors duration-300">关于</a>
+                <a href="#education" class="hover:text-accent transition-colors duration-300">教育</a>
+                <a href="#achievements" class="hover:text-accent transition-colors duration-300">成就</a>
+                <a href="#contact" class="hover:text-accent transition-colors duration-300">联系</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="pt-32 pb-20 bg-gradient-to-b from-primary to-secondary text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-[clamp(2.5rem,6vw,4rem)] font-bold mb-6 leading-tight font-mono tracking-tight">
+                    马元上
+                </h1>
+                <div class="w-24 h-1 bg-accent mx-auto mb-8"></div>
+                <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
+                    中国中学2027届学生 | 专注学业与个人成长
+                </p>
+                <div class="mt-12">
+                    <a href="#about" class="inline-block bg-accent hover:bg-opacity-80 text-white font-medium py-3 px-8 rounded-sm transition-all duration-300 transform hover:-translate-y-1">
+                        了解更多
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于部分 -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center font-mono">
+                    <span class="text-accent">#</span> 关于我
+                </h2>
+                <div class="section-divider mb-12"></div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="bg-gray-100 p-8 rounded-sm shadow-lg">
+                        <div class="aspect-square overflow-hidden rounded-sm">
+                            <img src="https://picsum.photos/seed/profile/600/600" alt="马元上的照片" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-lg mb-6 leading-relaxed">
+                            我是马元上，中国中学2027届在读学生。我始终秉持着严谨认真的学习态度和对知识的渴望，在学业上不断追求进步。
+                        </p>
+                        <p class="text-lg mb-6 leading-relaxed">
+                            除了课本知识，我还对自然科学和艺术设计有着浓厚的兴趣，尤其在微型景观创作方面投入了不少精力，并取得了一定的成绩。
+                        </p>
+                        <p class="text-lg leading-relaxed">
+                            我相信通过持续的努力和对事物的热情，能够不断突破自我，实现更大的成长。
+                        </p>
+                        
+                        <div class="mt-10 grid grid-cols-2 gap-4">
+                            <div class="bg-gray-100 p-4 rounded-sm">
+                                <div class="text-accent text-3xl mb-2"><i class="fa fa-graduation-cap"></i></div>
+                                <div class="font-medium">中国中学</div>
+                                <div class="text-gray-600 text-sm">2027届在读</div>
+                            </div>
+                            <div class="bg-gray-100 p-4 rounded-sm">
+                                <div class="text-accent text-3xl mb-2"><i class="fa fa-trophy"></i></div>
+                                <div class="font-medium">多项荣誉</div>
+                                <div class="text-gray-600 text-sm">学术与特长</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 教育背景 -->
+    <section id="education" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center font-mono">
+                    <span class="text-accent">#</span> 教育背景
+                </h2>
+                <div class="section-divider mb-12"></div>
+                
+                <div class="relative">
+                    <!-- 时间线 -->
+                    <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-300 transform md:translate-x-px"></div>
+                    
+                    <!-- 中国中学 -->
+                    <div class="relative mb-16">
+                        <div class="md:flex items-center">
+                            <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 md:text-right order-2 md:order-1">
+                                <h3 class="text-2xl font-bold mb-2">中国中学</h3>
+                                <div class="text-accent font-medium mb-3">2024 - 2027 (预计)</div>
+                                <p class="text-gray-600">
+                                    目前就读于中国中学高中部，担任班级学习委员。在校期间，我认真学习各门课程，积极参与学校组织的各项活动，综合表现优秀，获得了学校二等奖学金。
+                                </p>
+                            </div>
+                            <div class="absolute left-0 md:left-1/2 w-6 h-6 rounded-full bg-accent transform -translate-x-1/2 md:translate-x-0 flex items-center justify-center z-10 order-1 md:order-2">
+                                <div class="w-2 h-2 rounded-full bg-white"></div>
+                            </div>
+                            <div class="md:w-1/2 md:pl-12 order-3"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 初中教育 -->
+                    <div class="relative">
+                        <div class="md:flex items-center">
+                            <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 order-2">
+                            </div>
+                            <div class="absolute left-0 md:left-1/2 w-6 h-6 rounded-full bg-accent transform -translate-x-1/2 md:translate-x-0 flex items-center justify-center z-10 order-1">
+                                <div class="w-2 h-2 rounded-full bg-white"></div>
+                            </div>
+                            <div class="md:w-1/2 md:pl-12 order-3">
+                                <h3 class="text-2xl font-bold mb-2">初中教育</h3>
+                                <div class="text-accent font-medium mb-3">2021 - 2024</div>
+                                <p class="text-gray-600">
+                                    完成初中阶段学业，奠定了扎实的知识基础，培养了良好的学习习惯。在此期间开始对自然科学和艺术产生浓厚兴趣，并积极参与相关课外活动。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 成就与荣誉 -->
+    <section id="achievements" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center font-mono">
+                    <span class="text-accent">#</span> 成就与荣誉
+                </h2>
+                <div class="section-divider mb-12"></div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- 成就卡片1 -->
+                    <div class="bg-gray-100 p-6 rounded-sm hover:shadow-lg transition-shadow duration-300 border-l-4 border-accent">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">2024年上海市徐汇区青少年"微型景观秀"二等奖</h3>
+                            <span class="bg-accent text-white text-sm px-3 py-1 rounded-full">2024</span>
+                        </div>
+                        <p class="text-gray-600">
+                            在上海市徐汇区举办的青少年"微型景观秀"比赛中，凭借创意独特的微型生态景观作品获得二等奖。作品展现了对自然生态的理解和艺术设计能力。
+                        </p>
+                    </div>
+                    
+                    <!-- 成就卡片2 -->
+                    <div class="bg-gray-100 p-6 rounded-sm hover:shadow-lg transition-shadow duration-300 border-l-4 border-accent">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">中国中学2024学年二等奖学金</h3>
+                            <span class="bg-accent text-white text-sm px-3 py-1 rounded-full">2024</span>
+                        </div>
+                        <p class="text-gray-600">
+                            因在2024学年表现优异，学业成绩突出，综合评价良好，获得中国中学颁发的二等奖学金，以资鼓励。
+                        </p>
+                    </div>
+                    
+                    <!-- 成就卡片3 -->
+                    <div class="bg-gray-100 p-6 rounded-sm hover:shadow-lg transition-shadow duration-300 border-l-4 border-accent">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">2008年感恩中国奖</h3>
+                            <span class="bg-accent text-white text-sm px-3 py-1 rounded-full">2008</span>
+                        </div>
+                        <p class="text-gray-600">
+                            获得2008年度"感恩中国奖"，表彰在公益活动和感恩教育中表现突出，展现了良好的品德修养和社会责任感。
+                        </p>
+                    </div>
+                    
+                    <!-- 成就卡片4 -->
+                    <div class="bg-gray-100 p-6 rounded-sm hover:shadow-lg transition-shadow duration-300 border-l-4 border-accent">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">2010年度风云人物</h3>
+                            <span class="bg-accent text-white text-sm px-3 py-1 rounded-full">2010</span>
+                        </div>
+                        <p class="text-gray-600">
+                            被评选为2010年度风云人物，表彰在相关领域做出的突出贡献和影响力，展现了卓越的个人能力和领导力。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系部分 -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center font-mono">
+                    <span class="text-accent">#</span> 联系我
+                </h2>
+                <div class="section-divider mb-12"></div>
+                
+                <div class="bg-white p-8 rounded-sm shadow-lg">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-6">联系方式</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="text-accent text-xl mt-1 mr-4"><i class="fa fa-envelope"></i></div>
+                                    <div>
+                                        <div class="font-medium">邮箱</div>
+                                        <div class="text-gray-600">mayuanshang@example.com</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="text-accent text-xl mt-1 mr-4"><i class="fa fa-phone"></i></div>
+                                    <div>
+                                        <div class="font-medium">电话</div>
+                                        <div class="text-gray-600">+86 138 **** 5678</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="text-accent text-xl mt-1 mr-4"><i class="fa fa-map-marker"></i></div>
+                                    <div>
+                                        <div class="font-medium">学校</div>
+                                        <div class="text-gray-600">中国中学，上海市徐汇区</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8">
+                                <h4 class="font-bold mb-4">社交媒体</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-accent transition-colors duration-300">
+                                        <i class="fa fa-weixin"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-accent transition-colors duration-300">
+                                        <i class="fa fa-weibo"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-accent transition-colors duration-300">
+                                        <i class="fa fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-2xl font-bold mb-6">发送消息</h3>
+                            <form>
+                                <div class="mb-4">
+                                    <label for="name" class="block text-gray-700 mb-2">姓名</label>
+                                    <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300" placeholder="您的姓名">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="email" class="block text-gray-700 mb-2">邮箱</label>
+                                    <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300" placeholder="您的邮箱">
+                                </div>
+                                <div class="mb-6">
+                                    <label for="message" class="block text-gray-700 mb-2">消息</label>
+                                    <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300" placeholder="请输入您想对我说的话"></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-accent hover:bg-opacity-80 text-white font-medium py-3 px-6 rounded-sm transition-all duration-300 transform hover:-translate-y-1">
+                                    发送消息
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-primary text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="font-mono font-bold text-xl tracking-wider mb-4">MA YUANSHANG</div>
+                <p class="text-gray-400 mb-6">中国中学2027届学生 | 个人介绍网站</p>
+                <div class="section-divider mb-6"></div>
+                <p class="text-gray-500 text-sm">© 2024 马元上. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-2', 'bg-primary/95', 'shadow-md');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2', 'bg-primary/95', 'shadow-md');
+            }
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // 关闭移动菜单（如果打开）
+                document.getElementById('mobileMenu').classList.add('hidden');
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

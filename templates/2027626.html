@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>星空打字机效果</title>
+  <!-- 引入 Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 引入 Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置 Tailwind 自定义颜色和字体 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            space: {
+              dark: '#050517',
+              blue: '#121242',
+            },
+            neon: {
+              blue: '#4EEAFF',
+              purple: '#A78BFA',
+              pink: '#FF6B8B',
+            }
+          },
+          fontFamily: {
+            typewriter: ['Courier New', 'Courier', 'monospace'],
+          },
+        },
+      }
+    }
+  </script>
+  
+  <!-- 自定义工具类 -->
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow-neon {
+        text-shadow: 0 0 5px currentColor, 0 0 20px currentColor;
+      }
+      .star-twinkle {
+        animation: twinkle 2s infinite ease-in-out;
+      }
+      .typewriter-cursor {
+        border-right: 2px solid currentColor;
+        animation: blink 1s step-end infinite;
+      }
+    }
+  </style>
+  
+  <style>
+    /* 星星闪烁动画 */
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+    
+    /* 打字光标闪烁动画 */
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: currentColor }
+    }
+    
+    /* 星空背景 */
+    body {
+      background-color: #000;
+      overflow: hidden;
+    }
+    
+    .star {
+      position: absolute;
+      background-color: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+    
+    /* 打字机效果容器 */
+    .typewriter-container {
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="bg-black text-white font-typewriter">
+  <!-- 星空背景容器 -->
+  <div id="stars" class="fixed inset-0 z-0"></div>
+  
+  <!-- 内容容器 -->
+  <div class="relative min-h-screen flex flex-col items-center justify-center z-10 px-4">
+    <!-- 打字机效果文字 -->
+    <div id="typewriter" class="text-[clamp(1.5rem,5vw,3rem)] font-bold text-neon-blue text-shadow-neon">
+      <span id="text-display"></span><span id="cursor" class="typewriter-cursor"></span>
+    </div>
+    
+   
+  <script>
+    // 生成随机星星
+    function createStars() {
+      const starsContainer = document.getElementById('stars');
+      const numberOfStars = Math.floor(window.innerWidth / 2); // 根据屏幕宽度决定星星数量
+      
+      for (let i = 0; i < numberOfStars; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        
+        // 随机位置
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        
+        // 随机大小
+        const size = Math.random() * 2 + 1;
+        
+        // 随机动画延迟和持续时间
+        const delay = Math.random() * 5;
+        const duration = Math.random() * 3 + 2;
+        
+        // 随机亮度
+        const opacity = Math.random() * 0.8 + 0.2;
+        
+        // 应用样式
+        star.style.left = `${x}%`;
+        star.style.top = `${y}%`;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.animationDelay = `${delay}s`;
+        star.style.animationDuration = `${duration}s`;
+        star.style.opacity = opacity;
+        
+        // 随机颜色
+        const colors = ['#fff', '#a78bfa', '#4eeaee', '#ff6b8b'];
+        star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        starsContainer.appendChild(star);
+      }
+    }
+    
+    // 打字机效果
+    function typeWriter() {
+      const textDisplay = document.getElementById('text-display');
+      const cursor = document.getElementById('cursor');
+      
+      // 文字内容数组
+      const texts = [
+        "大家好，我叫汤文博，这是我的一个自我介绍。",
+        "目前是一个高二学生，不知道算不算学畜。",
+        "我的故乡并非来自地球，我来自一个叫泰拉的地方。",
+        "那是一个长满了黑色矿物的地方，我为一个组织效命。",
+        "因为一些缘故，组织的名字我不能透露，不过他和美国的一个州重名了。",
+        "很好笑吗？我在自我介绍中加入这些东西，也就只是为了让气氛活泼一点。",
+        "我在地球也不是默默无闻，我是08年感动中国奖项的获得者之一。",
+        "同时，我也参加了一些计算机竞赛，例如CCC，同时也获得了奖项。",
+        "在地球的我有时也会想家，每天放学回家都会用一个黑色长方体用电器返回故乡",
+        "你记住我了吗？",
+        "我赌你没记住。"
+      ];
+      
+      let textIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let isEnd = false;
+      
+      function type() {
+        const current = texts[textIndex];
+        
+        if (isDeleting) {
+          // 删除文字
+          textDisplay.textContent = current.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          // 添加文字
+          textDisplay.textContent = current.substring(0, charIndex + 1);
+          charIndex++;
+        }
+        
+        // 打字速度
+        let typeSpeed = 150;
+        
+        if (isDeleting) {
+          typeSpeed /= 2;
+        }
+        
+        // 如果正在打字且达到文字末尾
+        if (!isDeleting && charIndex === current.length) {
+          isEnd = true;
+          isDeleting = true;
+          // 暂停一段时间
+          typeSpeed = 1500;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          // 移动到下一个文字
+          textIndex = (textIndex + 1) % texts.length;
+          // 暂停一段时间
+          typeSpeed = 500;
+        }
+        
+        setTimeout(type, typeSpeed);
+      }
+      
+      type();
+    }
+    
+    // 页面加载完成后执行
+    window.addEventListener('load', () => {
+      createStars();
+      typeWriter();
+    });
+    
+    // 窗口大小改变时重新生成星星
+    window.addEventListener('resize', () => {
+      const starsContainer = document.getElementById('stars');
+      starsContainer.innerHTML = '';
+      createStars();
+    });
+  </script>
+</body>
+</html>

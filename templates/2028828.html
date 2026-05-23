@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄广安的自我介绍</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#10B981',
+                        neutral: '#F3F4F6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+    <div class="container mx-auto px-4 py-16 max-w-4xl">
+        <!-- 页面标题 -->
+        <header class="text-center mb-12">
+            <div class="inline-block p-1 rounded-full bg-gradient-to-r from-primary to-secondary mb-6">
+                <div class="w-20 h-20 rounded-full bg-white flex items-center justify-center">
+                    <i class="fa fa-user text-3xl text-primary"></i>
+                </div>
+            </div>
+            <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-gray-800 mb-4 text-shadow">黄广安</h1>
+            <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+        </header>
+        
+        <!-- 个人信息卡片 -->
+        <section class="bg-white rounded-2xl shadow-lg overflow-hidden mb-12 card-hover">
+            <div class="p-8 md:p-10">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800 flex items-center">
+                    <i class="fa fa-info-circle text-primary mr-3"></i>基本信息
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="flex items-center p-4 bg-neutral rounded-xl">
+                        <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                            <i class="fa fa-graduation-cap text-primary"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">班级</p>
+                            <p class="font-medium">高一8班</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center p-4 bg-neutral rounded-xl">
+                        <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                            <i class="fa fa-birthday-cake text-primary"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">年龄</p>
+                            <p class="font-medium">15岁</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center p-4 bg-neutral rounded-xl">
+                        <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                            <i class="fa fa-mars text-primary"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">性别</p>
+                            <p class="font-medium">男</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center p-4 bg-neutral rounded-xl">
+                        <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                            <i class="fa fa-flag text-primary"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">身份</p>
+                            <p class="font-medium">高中生</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 个人简介 -->
+        <section class="bg-white rounded-2xl shadow-lg p-8 md:p-10 mb-12 card-hover">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800 flex items-center">
+                <i class="fa fa-comment text-secondary mr-3"></i>关于我
+            </h2>
+            
+            <p class="text-gray-600 leading-relaxed mb-4">
+                大家好，我叫黄广安，是一名高一8班的学生，今年15岁。我是一个性格开朗、乐于助人的男生，很荣幸能和各位同学在同一个班级学习和生活。
+            </p>
+            
+            <p class="text-gray-600 leading-relaxed">
+                在学习上，我始终保持积极进取的态度，努力掌握各科知识；在生活中，我喜欢结交朋友，参与集体活动。我相信在未来的高中生活中，我们能够共同成长，一起度过这段美好的时光。
+            </p>
+        </section>
+        
+        <!-- 兴趣爱好 -->
+        <section class="bg-white rounded-2xl shadow-lg p-8 md:p-10 card-hover">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800 flex items-center">
+                <i class="fa fa-heart text-secondary mr-3"></i>兴趣爱好
+            </h2>
+            
+            <div class="flex flex-wrap gap-4">
+                <div class="px-5 py-3 bg-neutral rounded-full flex items-center">
+                    <i class="fa fa-book text-primary mr-2"></i>
+                    <span>阅读</span>
+                </div>
+                <div class="px-5 py-3 bg-neutral rounded-full flex items-center">
+                    <i class="fa fa-futbol-o text-primary mr-2"></i>
+                    <span>运动</span>
+                </div>
+                <div class="px-5 py-3 bg-neutral rounded-full flex items-center">
+                    <i class="fa fa-music text-primary mr-2"></i>
+                    <span>音乐</span>
+                </div>
+                <div class="px-5 py-3 bg-neutral rounded-full flex items-center">
+                    <i class="fa fa-code text-primary mr-2"></i>
+                    <span>编程</span>
+                </div>
+                <div class="px-5 py-3 bg-neutral rounded-full flex items-center">
+                    <i class="fa fa-gamepad text-primary mr-2"></i>
+                    <span>游戏</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 页脚 -->
+        <footer class="text-center text-gray-500 text-sm mt-16">
+            <p>黄广安的自我介绍 &copy; 2023</p>
+        </footer>
+    </div>
+
+    <!-- 简单的动画效果 -->
+    <script>
+        // 页面加载时的淡入效果
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                
+                setTimeout(() => {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, 100 + (index * 150));
+            });
+        });
+    </script>
+</body>
+</html>
+    
